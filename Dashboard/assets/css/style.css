@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*Formatação padrão*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f7fc;
+}
+/*Estilização do link a*/
+a{
+    text-decoration: none;
+    color: white;
+    font-family:"Poppins" ;
+    font-weight: 500;
+}
+/*Estilização H2*/
+.principal{
+    font-family: 'Exo 2';
+    font-weight: 400;
+    font-size: 28px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.principal:hover{
+    color: #fdd028;
+}
+
+/*Container de todo conteúdo da página*/
+.container {
+    display: flex;
+    width: 100%;
+    margin-left: 240px;
+}
+
+/*Sidebar fixo*/
+.sidebar {
+    width: 250px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    height: 100vh; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    overflow-y: auto; 
+}
+
+.logo {
+    margin-bottom: 30px;
+}
+
+
+/*Inicio da formatação das UL na ASIDE*/
+aside ul {
+    list-style-type: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+aside ul li {
+    padding: 10px 5px;
+    cursor: pointer;
+    font-family:"Poppins" ;
+    font-weight: 500;
+}
+
+aside li:hover {
+    color:white;
+    background-color: black;
+}
+
+/*Fim da formatação das UL na ASIDE*/
+
+/*Inicio da formatação dos submenus´s na ASIDE*/
+.submenu {
+    display: none;
+    padding-left: 15px;
+}
+
+.submenu li {
+    padding: 5px 0;
+}
+
+.submenu li:hover {
+    color: #fdd028;
+}
+
+/*Fim da formatação dos submenus´s na ASIDE*/
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.dashboard h1 {
+    margin: 20px 0;
+    font-size: 50px;
+    color: transparent;
+    background: linear-gradient(45deg, #fdd028, #ff00ff, #0000ff);
+    background-clip: text;
+    -webkit-background-clip: text; 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+/*Cards do overview*/
+.overview {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 24%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #333;
+}
+
+.card i {
+    font-size: 30px;
+    color: #2980b9;
+}
+/*Cards do overview fim*/
+
+/*Estilização do chart principal*/
+#mychart{
+    max-width: 100px;
+}
+
+/*Estilização da tabela*/
+.display{
+    border: solid black 1px;
+    margin-top: 100px;
+}
