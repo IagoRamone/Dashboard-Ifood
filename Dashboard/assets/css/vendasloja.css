@@ -18,12 +18,17 @@ body {
 a{
     text-decoration: none;
     color: white;
+    font-family:"Poppins" ;
+    font-weight: 500;
+}
+/*Estilização do H*/
+h1,h2,h3{
+    font-family: 'Exo 2';
+    font-weight: 600;
 }
 /*Estilização do H2*/
 .principal{
-    font-family: 'Exo 2';
-    font-weight: 400;
-    font-size: 28px;
+    font-size: 25px;
     margin-top: 30px;
     margin-bottom: 50px;
 }
@@ -67,7 +72,7 @@ aside ul li {
     padding: 10px 5px;
     cursor: pointer;
     font-family:"Poppins" ;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 aside li:hover {

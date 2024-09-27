@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Adez</title>
+    <link rel="stylesheet" href="../css/perfil.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="../img/Foguete amarelo.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
+<body>
+    <div class="container">
+        <!-- Menu lateral -->
+        <aside class="sidebar">
+            <div class="logo">
+                <a href="/Dashboard/index.html"> <h2  class="principal">Dashboard Adez</h2></a>
+            </div>
+            <ul>
+                <a href="/Dashboard/index.html"><li class="menuprincipal"><i class="bi bi-house"></i> Home</li></a>
+                <li class="menuprincipal" onclick="toggleMenu('menu1')">
+                    <i class="bi bi-bag"></i> Vendas
+                    <ul class="submenu" id="menu1">
+                        <a href="../pages/vendasloja.html"><li>Por Loja</li></a>
+                        <li>Por Produto</li>
+                        <li>Por Bairro</li>
+                        <li>Por Cidade</li>
+                        <li>Mapa de pedidos</li>
+                    </ul>
+                </li>
+                <li class="menuprincipal" onclick="toggleMenu('menu2')">
+                    <i class="bi bi-credit-card"></i> Pagamentos
+                    <ul class="submenu" id="menu2">
+                        <li>Visão Geral</li> 
+                        <li>Cupons</li>
+                        <li>Repasses</li>
+                        <li>Formas de pagamento</li>
+                    </ul>
+                </li>
+                <li class="menuprincipal" onclick="toggleMenu('menu3')">
+                    <i class="bi bi-person"></i> Clientes
+                    <ul class="submenu" id="menu3">
+                        <li>Visão Geral</li>
+                        <li>Por Bairro</li>
+                        <li>Por cidade</li>
+                    </ul>
+                </li>
+                <li class="menuprincipal" onclick="toggleMenu('menu4')">
+                    <i class="bi bi-star"></i> Avaliações
+                    <ul class="submenu" id="menu4">
+                        <li>Visão Geral</li>
+                        <li>Comentários</li>
+                    </ul>
+                </li>
+                <li class="menuprincipal" onclick="toggleMenu('menu5')">
+                    <i class="bi bi-person"></i> Conta
+                    <ul class="submenu" id="menu5">
+                        <a href="../pages/perfil.html"><li>perfil</li></a>
+                        <a href="../pages/lojas.html"><li>Lojas</li></a>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+
+       
+   <!-- Conteúdo principal -->
+   <main class="main-content">
+    <div class="tittle">
+        <h1>Conta</h1>
+    </div>
+    <br>
+    <div class="info-card">
+        <div class="info-header">
+            <span>Informações pessoais</span>
+        </div>
+        <br>
+        <div class="info-row">
+            <span class="label">Nome</span>
+            <span class="value">Administração Adez</span>
+            <a class="link" href="#">&#x276F;</a>
+        </div>
+        <div class="info-row">
+            <span class="label">Endereço</span>
+            <span class="value">BR</span>
+            <a class="link" href="#">&#x276F;</a>
+        </div>
+        <div class="info-row">
+            <span class="label">Número de telefone</span>
+            <span class="value">+55 (21)99754245</span>
+            <a class="link" href="#">&#x276F;</a>
+        </div>
+        <div class="info-row">
+            <span class="label">Empresa</span>
+            <span class="value">Adez Comunicação</span>
+            <a class="link" href="#">&#x276F;</a>
+        </div>
+    </div>
+</main>
+   
+     <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/script.js"></script>
+    
+</body>
+</html>

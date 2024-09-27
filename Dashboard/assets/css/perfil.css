@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*Formatação padrão*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f7fc;
+}
+/*Estilização do link a*/
+a{
+    text-decoration: none;
+    color: white;
+    font-family:"Poppins" ;
+    font-weight: 500;
+}
+/*Estilização do H*/
+h1,h2,h3{
+    font-family: 'Exo 2';
+    font-weight: 600;
+}
+/*Fim da stilização do H*/
+
+/*Estilização Principal*/
+.principal{
+    font-size: 25px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.principal:hover{
+    color: #fdd028;
+}
+
+/*Container de todo conteúdo da página*/
+.container {
+    display: flex;
+    width: 100%;
+    margin-left: 240px;
+}
+
+/*Sidebar fixo*/
+.sidebar {
+    width: 250px;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    height: 100vh; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    overflow-y: auto; 
+}
+
+.logo {
+    margin-bottom: 30px;
+}
+
+
+/*Inicio da formatação das UL na ASIDE*/
+aside ul {
+    list-style-type: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+aside ul li {
+    padding: 10px 5px;
+    cursor: pointer;
+    font-family:"Poppins" ;
+    font-weight: 600;
+}
+
+aside li:hover {
+    color:white;
+    background-color: black;
+}
+
+/*Fim da formatação das UL na ASIDE*/
+
+/*Inicio da formatação dos submenus´s na ASIDE*/
+.submenu {
+    display: none;
+    padding-left: 15px;
+}
+
+.submenu li {
+    padding: 5px 0;
+}
+
+.submenu li:hover {
+    color: #fdd028;
+}
+
+/*Fim da formatação dos submenus´s na ASIDE*/
+/*Estilização da main*/
+.main-content {
+    width: 800px;
+    margin-left: 30px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.tittle {
+    font-size: 20px;
+    color: black;
+    text-align: left;
+    margin-bottom: 10px;
+}
+/*Card*/
+.info-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.info-header {
+    display: flex;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.info-card p {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: bold;
+    color: black;
+    font-family:"Poppins" ;
+    font-weight: 600;
+}
+
+.value {
+    color: black;
+    font-family:"Poppins" ;
+    font-weight: 300;
+    text-align: center;
+    justify-content: center;
+}
+/*EStilização do link (seta)*/
+.link {
+    color:#fdd028;
+    text-decoration: none;
+    font-size: 16px;
+}
+.link:hover {
+    color:black;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/*Fim estilização do link (seta)*/
