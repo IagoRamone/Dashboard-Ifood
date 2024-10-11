@@ -4,7 +4,7 @@ import requests
 from flask import Flask, jsonify, request
 
 
-load_dotenv() 
+load_dotenv()
 
 
 app = Flask(__name__)   
@@ -81,9 +81,3 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-@app.route('/')
-def home():
-    return "Bem-vindo à API do iFood!"
-
-print(f'Client ID: {client_id}')
-print(f'Client Secret: {client_secret}')
