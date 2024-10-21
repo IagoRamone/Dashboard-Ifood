@@ -29,7 +29,6 @@ token_expiration_time = 0
 def get_access_token():
     global access_token, token_expiration_time
     
-    # Verifica se o token ainda é válido
     if access_token is None or time.time() > token_expiration_time:
         url = 'https://merchant-api.ifood.com.br/authentication/v1.0/oauth/token'
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
