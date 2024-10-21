@@ -35,7 +35,7 @@ def get_access_token():
         data = {
             'client_id': client_id,
             'client_secret': client_secret,
-            'grant_type': 'client_credentials'
+            'grant_type': client_credentials
         }
 
         response = requests.post(url, data=data, headers=headers)
@@ -47,8 +47,10 @@ def get_access_token():
             return access_token
         else:
             raise Exception(f"Failed to get access token: {response.text}")
-
+        
     return access_token
+
+
 
 @app.route('/financeiro/token', methods=['GET'])
 def get_token():
