@@ -12,12 +12,9 @@ app = Flask(__name__)
 
 client_id = os.getenv('CLIENT_ID')
 client_secret = os.getenv('CLIENT_SECRET')
-client_credentials = os.getenv('CLIENT_CREDENTIALS')
-
 
 print(f"Client ID: {client_id}")
 print(f"Client Secret: {client_secret}")
-print(f"Client credentials: {client_credentials}")
 
 @app.route('/')
 def home():
@@ -35,10 +32,13 @@ def get_access_token():
         data = {
             'client_id': client_id,
             'client_secret': client_secret,
-            'grant_type': client_credentials
+            'grant_type': 'client_credentials' 
         }
-
+        print("Dados enviados:", data) 
         response = requests.post(url, data=data, headers=headers)
+
+        print("Status da resposta:", response.status_code)  # Status da resposta
+        print("Corpo da resposta:", response.text)
         
         if response.status_code == 200:
             token_info = response.json()
@@ -47,10 +47,8 @@ def get_access_token():
             return access_token
         else:
             raise Exception(f"Failed to get access token: {response.text}")
-        
+
     return access_token
-
-
 
 @app.route('/financeiro/token', methods=['GET'])
 def get_token():
