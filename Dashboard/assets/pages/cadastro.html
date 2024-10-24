@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Incluindo o jQuery Mask Plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="/Dashboard/assets/js/cadastro.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -17,7 +18,7 @@
     </header>
     <div class="login-container">
         <h2>Cadastro</h2>
-        <form action="../php/cadastro.php" method="post">
+        <form action="/cadastrar" method="post">
             <label for="username">Nome Completo</label>
             <input type="text" id="nome" name="nome" maxlength="40" required>
 

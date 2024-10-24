@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import requests
 from flask import Flask, jsonify, request
 import time
+from bd import insert_user  
 
 
 load_dotenv()
@@ -146,6 +147,19 @@ def get_settlements_data():
     settlements_data = requisicao_settlements()
     return jsonify(settlements_data)
 
+#Cadastro no banco
+
+@app.route('/cadastrar', methods=['POST'])
+def cadastrar():
+    data = request.get_json() 
+    nome = data['nome']
+    email = data['email']
+    tel = data['tel']
+    usuario = data['user']
+    senha = data['senha']
+    insert_user(nome, email, tel, usuario, senha)
+    
+    return jsonify({"message": "Cadastro realizado com sucesso!"}), 201
 
 if __name__ == '__main__':
     app.run(debug=True)
