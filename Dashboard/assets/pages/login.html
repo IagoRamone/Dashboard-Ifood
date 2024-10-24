@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/Dashboard/assets/css/login.css">
+    <link rel="icon" href="/Dashboard/assets/img/Foguete amarelo.png">
+</head>
+<body>
+    <header class="header">
+        <a href="/Dashboard/index.html"><img src="/Dashboard/assets/img/2.png" alt="ADEZ Logo" class="logo"></a>
+    </header>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="../php/login.php" method="post">
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" maxlength="8" required>
+            
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" maxlength="6" required>
+            <a href="#">Esqueci minha senha</a>
+            
+            <button type="submit">Entrar</button>
+            <a href="/Dashboard/assets/pages/cadastro.html" class="btn">Cadastrar</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -8,7 +8,7 @@ import time
 load_dotenv()
 
 
-app = Flask(__name__)   
+app = Flask(__name__)
 
 client_id = os.getenv('CLIENT_ID')
 client_secret = os.getenv('CLIENT_SECRET')
@@ -139,6 +139,12 @@ def get_settlements(merchant_id):
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+
+
+@app.route('/dados-settlements')
+def get_settlements_data():
+    settlements_data = requisicao_settlements()
+    return jsonify(settlements_data)
 
 
 if __name__ == '__main__':

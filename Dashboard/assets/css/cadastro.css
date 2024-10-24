@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+/*Estilização do Header*/
+.header {
+    position: top;
+    margin-top: 0;
+    width: 100%;
+    background-color: #000;
+    padding: 10px 0;
+}
+
+.logo {
+    max-width: 150px;
+    margin-left: 100px;
+}
+/*Fim da estilização do Header*/
+/*Estilização dos links*/
+a {
+    text-align: left;
+    font-size: 12px;
+    color: #000;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/*Fim da estilização dos links*/
+/*Estilização do container*/
+.login-container {
+    margin-top: 40px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 16px;
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button {
+    padding: 10px;
+    border: 2px solid #000;
+    background-color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #000;
+    color: #fff;
+}
+/*Fim da estilização do container*/

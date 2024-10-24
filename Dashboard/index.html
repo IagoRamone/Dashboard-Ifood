@@ -69,21 +69,22 @@
                 <div class="overview">
                     <div class="card total">
                         <i class="fas fa-box"></i>
-                        <p>R$ 70.093,41 Total<br>R$ 67.358,74 Produtos</p>
+                        <p id="total-sales">R$ 70.093,41 Total<br>R$ 67.358,74 Produtos</p>
                     </div>
                     <div class="card orders">
                         <i class="fas fa-shopping-cart"></i>
-                        <p>1.123 Pedidos<br>R$ 62,42 Ticket Médio</p>
+                        <p id="total-orders">1.123 Pedidos<br>R$ 62,42 Ticket Médio</p>
                     </div>
                     <div class="card delivery">
                         <i class="fas fa-truck"></i>
-                        <p>R$ 3,42 Entrega Média</p>
+                        <p id="avg-delivery">R$ 3,42 Entrega Média</p>
                     </div>
                     <div class="card ratings">
                         <i class="fas fa-star"></i>
-                        <p>41 Avaliações<br>4,8 Nota Média</p>
+                        <p id="avg-rating">41 Avaliações<br>4,8 Nota Média</p>
                     </div>
                 </div>
+                
                 <div>
                     <canvas id="myChart">     
                     </canvas>
@@ -96,25 +97,15 @@
                         <tr>
                             <th>Vendas Totais</th>
                             <th>Pedidos</th>
-                            <th>Entrega média</th>
+                            <th>Entrega Média</th>
                             <th>Avaliações</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>70.093,41</td>
-                            <td>1.123 </td>
-                            <td>R$ 3,42</td>
-                            <td>4,8</td>
-                        </tr>
-                        <tr>
-                            <td>60.100,41</td>
-                            <td>2.500 </td>
-                            <td>R$ 10,42</td>
-                            <td>5,0</td>
-                        </tr>
+                    <tbody id="table-body">
+                        <!-- Aqui será preenchido pelo JavaScript -->
                     </tbody>
-                </table>     
+                </table>
+                 
             </section>
         </main>
     </div>

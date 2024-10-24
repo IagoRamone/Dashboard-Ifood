@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="/Dashboard/assets/css/cadastro.css">
+    <link rel="icon" href="/Dashboard/assets/img/Foguete amarelo.png">
+    <!-- Incluindo jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluindo o jQuery Mask Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="/Dashboard/index.html"> <img src="/Dashboard/assets/img/2.png" alt="ADEZ Logo" class="logo"></a>
+    </header>
+    <div class="login-container">
+        <h2>Cadastro</h2>
+        <form action="../php/cadastro.php" method="post">
+            <label for="username">Nome Completo</label>
+            <input type="text" id="nome" name="nome" maxlength="40" required>
+
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" required>
+
+            <label for="tel">Telefone</label>
+            <input type="text" id="tel" name="tel" maxlength="15" required>
+            
+            <label for="user">Usuário</label>
+            <input type="text" id="user" name="user" maxlength="8" required>
+            
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" maxlength="6" required>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+    $('#tel').mask('(00) 00000-0000');
+
+    $('form').on('submit', function(e) {
+        var email = $('#email').val();
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            e.preventDefault(); 
+            alert('Por favor, insira um email válido.');
+        }
+    });
+});
+    </script>
+</body>
+</html>
