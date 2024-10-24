@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Adez</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="/Dashboard/assets/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link rel="icon" href="./assets/img/Foguete amarelo.png">
+    <link rel="icon" href="/Dashboard/assets/img/Foguete amarelo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 </head>
 <body>
+    <button class="menu-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i> <!-- Ícone de menu hamburger -->
+    </button>
     <div class="container">
         <!-- Menu lateral -->
         <aside class="sidebar">
             <div class="logo">
-                <a href="/Dashboard/index.html"> <h2  class="principal">Dashboard Adez</h2></a>
+                <a href="/index.html"> <h2  class="principal">Dashboard Adez</h2></a>
             </div>
             <ul>
-                <a href="/Dashboard/index.html"><li class="menuprincipal"><i class="bi bi-house"></i> Home</li></a>
+                <a href="/index.html"><li class="menuprincipal"><i class="bi bi-house"></i> Home</li></a>
                 <li class="menuprincipal" onclick="toggleMenu('menu1')">
                     <i class="bi bi-bag"></i> Vendas
                     <ul class="submenu" id="menu1">
-                        <a href="./assets/pages/vendasloja.html"><li>Por Loja</li></a>
+                        <a href="/Dashboard/assets/pages/lojas.html"><li>Por Loja</li></a>
                         <li>Por Produto</li>
                         <li>Por Bairro</li>
                         <li>Por Cidade</li>
@@ -56,8 +59,8 @@
                 <li class="menuprincipal" onclick="toggleMenu('menu5')">
                     <i class="bi bi-person"></i> Conta
                     <ul class="submenu" id="menu5">
-                        <a href="./assets/pages/perfil.html"><li>perfil</li></a>
-                        <a href="./assets/pages/lojas.html"><li>Lojas</li></a>
+                        <a href="/Dashboard/assets/pages/perfil.html"><li>perfil</li></a>
+                        <a href="/Dashboard/assets/pages/lojas.html"><li>Lojas</li></a>
                     </ul>
                 </li>
             </ul>
@@ -69,7 +72,7 @@
                 <div class="overview">
                     <div class="card total">
                         <i class="fas fa-box"></i>
-                        <p id="total-sales">R$ 70.093,41 Total<br>R$ 67.358,74 Produtos</p>
+                        <p id="total-sales"> R$ 70.093,41 Total<br> R$ 67.358,74 Produtos</p>
                     </div>
                     <div class="card orders">
                         <i class="fas fa-shopping-cart"></i>
@@ -117,15 +120,20 @@
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <!--Script do Chart-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <script src="/Dashboard/assets/js/script.js"></script>
     <!-- Initialize DataTables -->
     <script>
         $(document).ready(function() {
             $('#table').DataTable();
-
-            // Adicionar dados à célula na linha 1, coluna 2
             table.cell({ row: 0, column: 1 }).data('Novo dado').draw();
         });
+    </script>
+    <!--Hamburguer-->>
+     <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
