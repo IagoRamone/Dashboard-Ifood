@@ -5,9 +5,7 @@ from flask import Flask, jsonify, request
 import time
 from bd import insert_user  
 
-
 load_dotenv()
-
 
 app = Flask(__name__)
 
@@ -20,7 +18,7 @@ print(f"Client Secret: {client_secret}")
 
 @app.route('/')
 def home():
-    return "Bem-vindo à API Financeira!:"
+    return "Bem-vindo à API Financeira!"
 
 access_token = None
 token_expiration_time = 0
@@ -31,23 +29,23 @@ def get_access_token():
     if access_token is None or time.time() > token_expiration_time:
         url = 'https://merchant-api.ifood.com.br/authentication/v1.0/oauth/token'
         headers = {
-        'accept': 'application/json',  
-        'Content-Type': 'application/x-www-form-urlencoded'  
-    }
-    
+            'accept': 'application/json',  
+            'Content-Type': 'application/x-www-form-urlencoded'  
+        }
+        
         data = {
-        'grantType': 'client_credentials',  
-        'clientId': client_id,              
-        'clientSecret': client_secret,      
-        'authorizationCode': '',
-        'authorizationCodeVerifier': '',
-        'refreshToken': ''
-    }
-    
+            'grantType': 'client_credentials',  
+            'clientId': client_id,              
+            'clientSecret': client_secret,      
+            'authorizationCode': '',
+            'authorizationCodeVerifier': '',
+            'refreshToken': ''
+        }
+        
         print("Dados enviados:", data) 
-        response = requests.post(url, data=data, headers=headers)
+        response = requests.post(url, data=data, headers=headers, timeout=10)
 
-        print("Status da resposta:", response.status_code)  # Status da resposta
+        print("Status da resposta:", response.status_code)  
         print("Corpo da resposta:", response.text)
         
         if response.status_code == 200:
@@ -76,23 +74,72 @@ def get_token():
                 'message': str(e)
             }
         }), 401 if 'credentials' in str(e) else 500
+
+# Função para gerar dados mockados de reconciliation
+def mock_reconciliation_data(merchant_id):
+    return {
+        "totalSales": 1000.0,
+        "netAmount": 950.0,
+        "commission": 50.0,
+        "period": "2024-10",
+        "merchant_id": merchant_id,
+        "items": [
+            {
+                "item": "Pedido 12345",
+                "grossAmount": 150.0,
+                "netAmount": 140.0,
+                "commission": 10.0
+            },
+            {
+                "item": "Pedido 67890",
+                "grossAmount": 200.0,
+                "netAmount": 180.0,
+                "commission": 20.0
+            }
+        ]
+    }
+
+# Função para gerar dados mockados de settlements
+def mock_settlements_data(merchant_id):
+    return {
+        "settlements": [
+            {
+                "settlementDate": "2024-10-15",
+                "grossAmount": 500.0,
+                "netAmount": 475.0,
+                "commission": 25.0,
+                "status": "settled"
+            },
+            {
+                "settlementDate": "2024-10-16",
+                "grossAmount": 600.0,
+                "netAmount": 570.0,
+                "commission": 30.0,
+                "status": "pending"
+            }
+        ]
+    }
+
 @app.route('/financeiro/reconciliation/<string:merchant_id>', methods=['GET'])
 def get_reconciliation(merchant_id):
     competence = request.args.get('competence')  
     print(f"Merchant ID: {merchant_id}")
     print(f"Competence: {competence}")
 
+    if competence == 'mock':  # Checa se quer dados mockados
+        return jsonify(mock_reconciliation_data(merchant_id)), 200
+
     try:
         token = get_access_token()  
         url = f'https://merchant-api.ifood.com.br/financial/v3.0/merchants/{merchant_id}/reconciliation?competence={competence}'
-        headers = {
+        headers = { 
             'accept': 'application/json',
             'Authorization': f'Bearer {token}',
             'Content-Type': 'application/json'
         }
         print("URL chamada:", url)
 
-        response = requests.get(url, headers=headers) 
+        response = requests.get(url, headers=headers, timeout=10) 
         if response.status_code == 200:
             return jsonify(response.json()), 200  
         elif response.status_code == 401:
@@ -103,14 +150,20 @@ def get_reconciliation(merchant_id):
     except Exception as e:
         return jsonify({'error': {'code': 'InternalServerError', 'message': str(e)}}), 500
     
-    
 @app.route('/financeiro/settlements/<string:merchant_id>', methods=['GET'])
 def get_settlements(merchant_id):
-
     begin_payment_date = request.args.get('beginPaymentDate')
     end_payment_date = request.args.get('endPaymentDate')
     begin_calculation_date = request.args.get('beginCalculationDate')
     end_calculation_date = request.args.get('endCalculationDate')
+
+    # Checa se quer dados mockados
+    if begin_payment_date == 'mock' and end_payment_date == 'mock':
+        return jsonify(mock_settlements_data(merchant_id)), 200
+
+    # Verifica se ao menos um conjunto de parâmetros de data foi fornecido
+    if not (begin_payment_date and end_payment_date) and not (begin_calculation_date and end_calculation_date):
+        return jsonify({'error': 'Missing required date parameters'}), 400
 
     try:
         token = get_access_token() 
@@ -120,8 +173,6 @@ def get_settlements(merchant_id):
             url = f'https://merchant-api.ifood.com.br/financial/v3.0/merchants/{merchant_id}/settlements?beginPaymentDate={begin_payment_date}&endPaymentDate={end_payment_date}'
         elif begin_calculation_date and end_calculation_date:
             url = f'https://merchant-api.ifood.com.br/financial/v3.0/merchants/{merchant_id}/settlements?beginCalculationDate={begin_calculation_date}&endCalculationDate={end_calculation_date}'
-        else:
-            return jsonify({'error': 'Missing required date parameters'}), 400
 
         headers = {
             'Authorization': f'Bearer {token}',
@@ -131,7 +182,7 @@ def get_settlements(merchant_id):
         print("URL chamada:", url)  
         print("Headers:", headers)   
 
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, timeout=10)
         if response.status_code == 200:
             return jsonify(response.json()) 
         else:
@@ -141,14 +192,12 @@ def get_settlements(merchant_id):
         return jsonify({'error': str(e)}), 500
 
 
-
 @app.route('/dados-settlements')
 def get_settlements_data():
     settlements_data = requisicao_settlements()
     return jsonify(settlements_data)
 
-#Cadastro no banco
-
+# Cadastro no banco
 @app.route('/cadastrar', methods=['POST'])
 def cadastrar():
     data = request.get_json() 
