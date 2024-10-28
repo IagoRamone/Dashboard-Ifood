@@ -210,5 +210,28 @@ def cadastrar():
     
     return jsonify({"message": "Cadastro realizado com sucesso!"}), 201
 
+
+@app.route('/financeiro/pedidos-unicos/<string:merchant_id>', methods=['GET'])
+def get_unique_sales(merchant_id):
+    competence = request.args.get('competence')  # Opcional: pegar o período
+    token = get_access_token()
+
+    # Montar a URL da API do iFood (substitua o endpoint conforme necessário)
+    url = f'https://merchant-api.ifood.com.br/financial/v3.0/merchants/{merchant_id}/sales?competence={competence}'
+    headers = {
+        'Authorization': f'Bearer {token}',
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.get(url, headers=headers, timeout=10)
+    if response.status_code == 200:
+        data = response.json()
+        # Contar pedidos únicos
+        unique_sales_count = len(set(item['order_id'] for item in data['orders']))
+        return jsonify({"unique_sales_count": unique_sales_count}), 200
+    else:
+        return jsonify({'error': response.text}), response.status_code
+
+
 if __name__ == '__main__':
     app.run(debug=True)
