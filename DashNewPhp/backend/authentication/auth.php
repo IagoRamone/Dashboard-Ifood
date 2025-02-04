@@ -1,5 +1,18 @@
 <?php
+
+include 'token_manager.php'; // Importa a lógica de gerenciamento de token
+    
+// OBS: Nesse formato de "token_manager" o token foi armazenado em um file '.json'.
+//        Mas pode ser feito tambem com o LocalStorage ou no banco de dados.
+
 function getIfoodToken() {
+
+    $savedToken = getSavedToken();
+    if ($savedToken) {
+        return $savedToken; // Usa o token salvo se ainda for válido
+    }
+
+    // Se não há token salvo ou está expirado, solicita um novo
     $clientId = "SEU_CLIENT_ID";
     $clientSecret = "SEU_CLIENT_SECRET";
 
@@ -29,3 +42,4 @@ function getIfoodToken() {
 $token = getIfoodToken();
 echo $token ? "Token: $token" : "Falha na autenticação";
 ?>
+
