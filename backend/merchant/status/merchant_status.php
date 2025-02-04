@@ -9,6 +9,7 @@ function getMerchantStatus($merchantId) {
         echo json_encode(["error" => "Erro ao obter o token"]);
         exit;
     }
+    //
 
     $url = "https://merchant-api.ifood.com.br/merchant/v1.0/merchants/$merchantId/status";
     $headers = [
